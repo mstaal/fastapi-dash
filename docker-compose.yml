@@ -1,0 +1,16 @@
+version: "3.4"
+
+services:
+  fastapi-dash:
+    build:
+      context: ../../
+      dockerfile: ./deployment/docker/Dockerfile.dev
+    volumes:
+      - ./app:/app
+    ports:
+      - 20409:20409
+      - 5677:5677
+      - 5678:5678
+    env_file: ./config/local.env
+    environment:
+      ENV: local
