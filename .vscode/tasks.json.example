@@ -1,0 +1,39 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "type": "docker-build",
+        "label": "docker-build-fastapi-dash",
+        "platform": "python",
+        "dockerBuild": {
+          "tag": "fastapi-dash:latest",
+          "dockerfile": "${workspaceFolder}/deployment/docker/Dockerfile",
+          "context": "${workspaceFolder}",
+          "pull": true,
+          "buildArgs": {
+            "CONTAINER_PYTHON_IMAGE": "python:3.9-slim"
+          }
+        }
+      },
+      {
+        "type": "docker-run",
+        "label": "docker-run-debug fastapi-dash",
+        "dependsOn": [
+          "docker-build-fastapi-dash"
+        ],
+        "dockerRun": {
+          "envFiles": ["${workspaceFolder}/config/local.env"]
+        },
+        "python": {
+          "args": [
+            "app.server.main:app",
+            "--host",
+            "0.0.0.0",
+            "--port",
+            "20203"
+          ],
+          "module": "uvicorn"
+        }
+      }
+    ]
+  }

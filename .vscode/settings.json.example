@@ -1,0 +1,7 @@
+{
+    "python.defaultInterpreterPath": ".venv/bin/python",
+    "makefile.extensionOutputFolder": "${workspaceFolder}/.vscode",
+    "python.testing.pytestEnabled": false,
+    "python.testing.cwd": "${workspaceFolder}",
+    "python.envFile": "${workspaceFolder}/config/local.env"
+}
