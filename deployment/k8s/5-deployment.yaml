@@ -30,10 +30,6 @@ spec:
         prometheus.io/path: /metrics
         prometheus.io/port: "__SERVER_PORT__"
         prometheus.io/scrape: "true"
-        ad.datadoghq.com/__APP__.check_names: '["openmetrics"]'
-        ad.datadoghq.com/__APP__.init_configs: '[{}]'
-        ad.datadoghq.com/__APP__.instances: '[{"prometheus_url": "http://%%host%%:__SERVER_PORT__/metrics","namespace": "__K8S_NAMESPACE__","metrics": ["*"],"send_distribution_buckets": true}]'
-        vault.security.banzaicloud.io/vault-role: "__VAULT_ROLE__"
     spec:
       hostname: __APP__
       containers:
