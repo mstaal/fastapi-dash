@@ -25,7 +25,3 @@ spec:
               name: __APP__
               port:
                 number: 80
-  tls:
-    - hosts:
-      - __DOMAIN__
-      secretName: tls-wildcard-maersk-digital-net
